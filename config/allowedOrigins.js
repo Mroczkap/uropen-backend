@@ -13,7 +13,8 @@ const allowedOrigins = [
     'https://kobi-cup.vercel.app/',
     'https://kobi-cup.vercel.app',
     'https://kobi-cup-mroczkap.vercel.app/',
-    'https://uropen-backend.vercel.app/',
+    'https://uropen.vercel.app/',
+    'https://uropen-front-mroczkaps-projects.vercel.app/'
 
 ];
 
