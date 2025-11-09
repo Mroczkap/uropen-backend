@@ -114,10 +114,6 @@ const finishAllGroups = async (idzawodow, groupOut) => {
   const wynikKoncowy = prepareWynikKoncowy(result, integerValue, free);
   
   const { max, runda } = determineMaxAndRound(wynikKoncowy.length, groupNo);
-
-  console.log("wynikKoncowy", wynikKoncowy);
-  console.log("max", max);
-  console.log("runda", runda);  
   await updateMatches(wynikKoncowy, max, runda, idzawodow, free, limit, groupNo);
 
   return { success: true };
@@ -182,16 +178,6 @@ const processGroups = async (grupy, gru, integerValue, limit, free) => {
 };
 
 const updateMatches = async (wynikKoncowy, max, runda, idzawodow, free, limit, groupNo) => {
-
-  console.log("wynikKoncowy",wynikKoncowy)
-  console.log("max",max)
-    console.log("runda",runda)
-      console.log("idzawodow",idzawodow)
-        console.log("free",free)
-          console.log("limit",limit)
-
-
-
   if (wynikKoncowy.length < max) {
     const wolne = max - wynikKoncowy.length;
     for (let i = 0; i < wolne; i++) {
