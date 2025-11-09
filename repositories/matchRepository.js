@@ -103,10 +103,14 @@ const getMatchesByDateRange = async (startDate, endDate) => {
     .toArray();
 };
 
-const updateMatchProgress = async (id, inProgress) => {
+const updateMatchProgress = async (id, inProgress, tableNo) => {
   return collectionMecze.findOneAndUpdate(
     { _id: new ObjectId(id) },
-    { $set: { inprogress: inProgress } }
+    { $set: { 
+      inprogress: inProgress,
+      tableno: tableNo
+
+     } }
   );
 };
 

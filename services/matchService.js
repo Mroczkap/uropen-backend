@@ -159,8 +159,8 @@ const getMatchesByDate = async (date) => {
   return addPlayerNamesToMatches(mecze, zawodniki);
 };
 
-const updateMatchProgress = async (id, inProgress) => {
-  await matchRepository.updateMatchProgress(id, inProgress);
+const updateMatchProgress = async (id, inProgress, tableNo) => {
+  await matchRepository.updateMatchProgress(id, inProgress, tableNo);
 };
 
 module.exports = {

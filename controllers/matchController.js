@@ -55,8 +55,8 @@ const handleShowSingle = async (req, res) => {
 
 const handleProgress = async (req, res) => {
   try {
-    const [id, inProgress] = req.body;
-    await matchService.updateMatchProgress(id, inProgress);
+    const [id, inProgress, tableNo] = req.body;
+    await matchService.updateMatchProgress(id, inProgress, tableNo);
     res.status(200).json({ message: "Match progress updated successfully" });
   } catch (e) {
     console.error('Error in handleProgress:', e);

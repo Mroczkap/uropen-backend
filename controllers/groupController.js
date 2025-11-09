@@ -31,7 +31,9 @@ const handleFinish = async (req, res) => {
 const handleGroupFinish = async (req, res) => {
   try {
     const { idzawodow } = req.query;
+    
     const [groupOut] = req.body;
+    console.log("0", req.body);
     const result = await groupService.finishAllGroups(idzawodow, groupOut);
     res.status(200).json(result);
   } catch (e) {

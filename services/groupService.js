@@ -97,26 +97,34 @@ const finishAllGroups = async (idzawodow, groupOut) => {
   const groupNo = grupy.length;
   const gru = [];
   const floatNumber = groupOut / groupNo;
+
+
   const integerValue = Number.isInteger(floatNumber)
     ? 99
     : Math.trunc(floatNumber);
-   
+       
   const free = await playerRepository.getFree();
-  
+  console.log("jestem", free)
   let limit = calculateLimit(floatNumber);
  
   await processGroups(grupy, gru, integerValue, limit, free);
-  
+
   const groupedByMiejsce = groupByMiejsce(gru);
   const result = prepareResult(groupedByMiejsce);
   const wynikKoncowy = prepareWynikKoncowy(result, integerValue, free);
+  
   const { max, runda } = determineMaxAndRound(wynikKoncowy.length, groupNo);
-  await updateMatches(wynikKoncowy, max, runda, idzawodow, free, limit);
+
+  console.log("wynikKoncowy", wynikKoncowy);
+  console.log("max", max);
+  console.log("runda", runda);  
+  await updateMatches(wynikKoncowy, max, runda, idzawodow, free, limit, groupNo);
 
   return { success: true };
 };
 
 const getGroupsAndMatches = async (idzawodow) => {
+
   const zawodniki = await playerRepository.getAllPlayers();
   const grupy = await groupRepository.getGroupsByCompetitionId(idzawodow);
   const groupsid = grupy.map((grupa) => grupa._id);
@@ -173,7 +181,17 @@ const processGroups = async (grupy, gru, integerValue, limit, free) => {
   }
 };
 
-const updateMatches = async (wynikKoncowy, max, runda, idzawodow, free, limit) => {
+const updateMatches = async (wynikKoncowy, max, runda, idzawodow, free, limit, groupNo) => {
+
+  console.log("wynikKoncowy",wynikKoncowy)
+  console.log("max",max)
+    console.log("runda",runda)
+      console.log("idzawodow",idzawodow)
+        console.log("free",free)
+          console.log("limit",limit)
+
+
+
   if (wynikKoncowy.length < max) {
     const wolne = max - wynikKoncowy.length;
     for (let i = 0; i < wolne; i++) {
@@ -191,6 +209,7 @@ const updateMatches = async (wynikKoncowy, max, runda, idzawodow, free, limit) =
         break;
 
       case 16:
+        console.log("jestem po")
         if (limit === 8) {
           nextmatch =
             groupNo === 2 ? outFromGroup32(index) : outFromGroup35(index);
@@ -210,6 +229,8 @@ const updateMatches = async (wynikKoncowy, max, runda, idzawodow, free, limit) =
       default:
         break;
     }
+
+
     await matchRepository.updateNextMatch(
       idzawodow,
       nextmatch,
