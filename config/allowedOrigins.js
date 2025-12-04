@@ -19,6 +19,7 @@ const allowedOrigins = [
     'https://lks-stobierna.vercel.app',
     'https://ts-app-chi.vercel.app/',
     'https://ts-app-chi.vercel.app',
+    'https://ts-app-be-git-main-mroczkaps-projects.vercel.app/'
 
 
 ];
