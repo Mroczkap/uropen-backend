@@ -17,7 +17,8 @@ const allowedOrigins = [
     'https://uropen-front-mroczkaps-projects.vercel.app/',
     'https://uropen.vercel.app',
     'https://lks-stobierna.vercel.app',
-    'https://ts-app-chi.vercel.app/l',
+    'https://ts-app-chi.vercel.app/',
+    'https://ts-app-chi.vercel.app',
 
 
 ];
